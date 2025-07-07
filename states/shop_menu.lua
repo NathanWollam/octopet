@@ -1,0 +1,2 @@
+-- this is opened when we press main button in shop area
+-- we may not keep this area
