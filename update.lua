@@ -89,14 +89,14 @@ function update_stat_menu()
     stat_box.stat_index -= 1
   end
 
-  local off_index = 2 * stat_box.stat_index + 2
+  local off_index = stat_box.stat_index + 1
   -- exp increment logic
   if not cursor_on_pet and
    btnp(❎) and
    stat_box.available_exp > 0 and
-   stat_box.stats[off_index] < 7 then
+   stats[off_index].level < 7 then
     stat_box.available_exp -= 1
-    stat_box.stats[off_index] += 1
+    stats[off_index].level += 1
     update_file()
   elseif btnp(❎) then
     sway_pet_startpoint(3)

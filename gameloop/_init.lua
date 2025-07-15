@@ -57,12 +57,13 @@ stat_box = {
     pet_name="octopet",
     stat_index = 0,
     available_exp = 0,
-    stats = {
-        "♥ health", 0,
-        "▒ speed",  0,
-        "✽ suction",0,
-        "∧ stretch",0
-    }
+}
+
+stats = {
+  {name="health", level=0, symbol="♥"},
+  {name="speed", level=0, symbol="▒"},
+  {name="suction", level=0, symbol="✽"},
+  {name="stretch", level=0, symbol="∧"}
 }
 
 -- shop
@@ -102,14 +103,4 @@ pupil_script      = {{0,0},{-4,0},{4,-4}}
 
 body_shift_ai     = 0
 body_shift_state  = 0
-end
-
-function error(val)
-  if val == nil then
-    error = "empty message (default)"
-  else
-    error = val
-  end
-
-  state = "debug"
 end
