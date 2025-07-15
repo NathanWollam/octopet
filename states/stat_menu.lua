@@ -41,8 +41,7 @@ function make_stat_box()
    stat_box.clr)
 
   -- draw text in statbox
-
-  local stat_index = 1
+  stat_index = 1
 
   print(
    stat_box.pet_name,
@@ -52,17 +51,19 @@ function make_stat_box()
 
   stat_index += 1
 
-  for v in all(stat_box.stats) do
-    local val = v
-    if type(val) == "number" then
-      val = make_exp_bar(val)
-    end
-    print(val,
-     stat_box.x0+4,
-     stat_box.y0+(6*stat_index),
-     text_color_inv)
+  for stat in all(stats) do
+    print_formatted_stat(stat.symbol..stat.name..stat.symbol)
+    stat_index += 1
+    print_formatted_stat(make_exp_bar(stat.level))
     stat_index += 1
   end
+end
+
+function print_formatted_stat(val)
+  print(val,
+        stat_box.x0+4,
+        stat_box.y0+(6*stat_index),
+        text_color_inv)
 end
 
 function make_exp_bar(exp)

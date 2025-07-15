@@ -24,7 +24,7 @@ function get_collisions()
 end
 
 function circ_rect_intersect(p)
-  local r = stat_box.stats[6]
+  local r = stats[3].level
   circ_dis_x = abs(world_pet.x-p.x)
   circ_dis_y = abs(world_pet.y-p.y)
 

@@ -2,18 +2,18 @@
 
 function update_file()
 dset(1, stat_box.available_exp)
-dset(2, stat_box.stats[2])
-dset(3, stat_box.stats[4])
-dset(4, stat_box.stats[6])
-dset(5, stat_box.stats[8])
+dset(2, stats[1].level)
+dset(3, stats[2].level)
+dset(4, stats[3].level)
+dset(5, stats[4].level)
 end
 
 function load_file()
 stat_box.available_exp = dget(1)
-stat_box.stats[2] = dget(2)
-stat_box.stats[4] = dget(3)
-stat_box.stats[6] = dget(4)
-stat_box.stats[8] = dget(5)
+stats[1].level = dget(2)
+stats[2].level = dget(3)
+stats[3].level = dget(4)
+stats[4].level = dget(5)
 end
 
 function set_file_defaults()
