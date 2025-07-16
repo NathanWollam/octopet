@@ -34,7 +34,8 @@ world_pet = {
     face = {
         smile=64,open=67,frown=80,
         hurt=83,blink=84
-    }
+    },
+    legs = {}
 }
 
 -- stats page --

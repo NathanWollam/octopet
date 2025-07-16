@@ -10,6 +10,7 @@ function update_main_menu()
   if btnp(❎) then
     manage_save_state("load")
     state = "world"
+    spawn_octopet()
     spawn_pkups_rand(102,9,8,8)
     spawn_pkups_rand(101,0,8,8)
   end

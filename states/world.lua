@@ -1,5 +1,16 @@
 -- world
 
+function spawn_octopet()
+  for i=1, 8 do
+    add(world_pet.legs, {
+      x=(10) + (i*10),
+      y=world_h/2,
+      d=4,
+      c=9
+    })
+  end
+end
+
 function spawn_pkups_rand(sprite, amount, width, height)
   for pkup=0,amount do
     x_offset= 0
@@ -12,6 +23,7 @@ function spawn_pkups_rand(sprite, amount, width, height)
     add(world_pkups,{s=sprite,x=x_range,y=y_range,h=height,w=width})
   end
 end
+
 
 function get_collisions()
   collisions = {}
