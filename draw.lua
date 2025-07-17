@@ -31,14 +31,14 @@ function draw_world()
 end
 
 function draw_octopet()
-  spr(world_pet.state,world_pet.x,world_pet.y,1,1,world_pet.is_left)
   draw_legs()
+  spr(world_pet.state,world_pet.x,world_pet.y,1,1,world_pet.is_left)
 end
 
 function draw_legs()
---world_pet.legs
+  poke(0x5f36,0x2) -- allows even diameter
   for leg in all(world_pet.legs) do
-    circ(leg.x, leg.y, leg.d/2, leg.c)
+    circfill(leg.x, leg.y, leg.d/2, leg.c)
   end
 end
 

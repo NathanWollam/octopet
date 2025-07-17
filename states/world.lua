@@ -1,15 +1,22 @@
 -- world
 
 function spawn_octopet()
-  for i=1, 8 do
+  local number_of_legs = 8
+  local symmetry_offset = 1/16
+  local distance_between_angles = 1/number_of_legs
+  for i=0, number_of_legs-1 do
+    local leg_angle = i*distance_between_angles + symmetry_offset
+    local sine_of_leg_angle = sin(leg_angle) * 6
+    local cosine_of_leg_angle = cos(leg_angle) * 6
     add(world_pet.legs, {
-      x=(10) + (i*10),
-      y=world_h/2,
-      d=4,
+      x=(world_pet.x+4) + sine_of_leg_angle,
+      y=(world_pet.y+4) + cosine_of_leg_angle,
+      d=2,
       c=9
     })
   end
 end
+
 
 function spawn_pkups_rand(sprite, amount, width, height)
   for pkup=0,amount do
@@ -24,6 +31,15 @@ function spawn_pkups_rand(sprite, amount, width, height)
   end
 end
 
+function update_legs(x_change, y_change)
+  local updated_legs = {}
+  for leg in all(world_pet.legs) do
+    leg.x+=x_change
+    leg.y+=y_change
+    add(updated_legs, leg)
+  end
+  return updated_legs
+end
 
 function get_collisions()
   collisions = {}
