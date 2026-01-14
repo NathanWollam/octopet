@@ -10,6 +10,7 @@ function update_main_menu()
   if btnp(❎) then
     manage_save_state("load")
     state = "world"
+    spawn_octopet()
     spawn_pkups_rand(102,9,8,8)
     spawn_pkups_rand(101,0,8,8)
   end
@@ -17,6 +18,8 @@ end
 
 function update_world()
   local face = world_pet.face[world_pet.set_face]
+  local x = world_pet.x
+  local y = world_pet.y
 
   if btnp(🅾️) then
     state = "stat_menu"
@@ -49,6 +52,7 @@ function update_world()
   -- need to have a mapper function
   -- for different collisions
   collisions = get_collisions()
+  world_pet.legs = update_legs(world_pet.x-x, world_pet.y-y)
   if (#collisions > 0) then
     clam_count += #collisions
   end

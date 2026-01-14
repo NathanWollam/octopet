@@ -20,9 +20,7 @@ function draw_world()
   palt(0,false)
   palt(8,true)
   -- draw foreground
-  spr(world_pet.state,world_pet.x,world_pet.y,1,1,world_pet.is_left)
-  spr(70, world_pet.x+8, world_pet.y)
-  spr(71, world_pet.x+16, world_pet.y)
+  draw_octopet()
   draw_world_pkups()
   -- info bar
   rectfill(0,0,127,info_bar_h,7)
@@ -32,8 +30,16 @@ function draw_world()
   color(text_color_inv)
 end
 
+function draw_octopet()
+  draw_legs()
+  spr(world_pet.state,world_pet.x,world_pet.y,1,1,world_pet.is_left)
+end
+
 function draw_legs()
-  --stat_box.stats
+  poke(0x5f36,0x2) -- allows even diameter
+  for leg in all(world_pet.legs) do
+    circfill(leg.x, leg.y, leg.d/2, leg.c)
+  end
 end
 
 function draw_world_pkups()
